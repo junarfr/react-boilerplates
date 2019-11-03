@@ -1,17 +1,27 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Typography } from "@material-ui/core"
+import { useStaticQuery, graphql, Link } from "gatsby"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import { ThemeProvider } from "@material-ui/core/styles"
+import { myTheme } from "../style/my-theme"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+const IndexPage = () => {
+  const data = useStaticQuery(graphql`
+    query SiteDescriptionQuery {
+      site {
+        siteMetadata {
+          description
+        }
+      }
+    }
+  `)
+
+  return (
+    <ThemeProvider theme={myTheme}>
+      <Typography variant="h4">{data.site.siteMetadata.description}</Typography>
+      <Link to="/dashboard">Go back to the homepage</Link>
+    </ThemeProvider>
+  )
+}
 
 export default IndexPage

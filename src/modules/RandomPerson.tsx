@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { RouteComponentProps } from "@reach/router"
+import { ThemeProvider } from "@material-ui/styles"
+import { myTheme } from "../style/my-theme"
+import Layout from "../components/layout"
 
 interface Props
   extends RouteComponentProps<{
@@ -15,8 +18,10 @@ export const RandomPerson: React.FC<Props> = ({ results = 1 }) => {
   }, [results])
 
   return (
-    <div>
-      <pre>{JSON.stringify(person, null, 2)}</pre>
-    </div>
+    <ThemeProvider theme={myTheme}>
+      <Layout>
+        <pre>{JSON.stringify(person, null, 2)}</pre>
+      </Layout>
+    </ThemeProvider>
   )
 }

@@ -3,10 +3,10 @@ import { RandomPerson } from "../modules/RandomPerson"
 import { Router as MyRouter } from "@reach/router"
 
 const Router = () => {
-  const sample = ""
+  // const sample = ""
   return (
     <MyRouter>
-      <RandomPerson path="/app/random-person/:results" />
+      <RandomPerson path="/dashboard/random-person/:results" />
     </MyRouter>
   )
 }
